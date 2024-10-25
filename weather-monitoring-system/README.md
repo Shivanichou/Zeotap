@@ -66,7 +66,8 @@ venv\Scripts\activate  **activate the environment**
 pip install -r requirements.txt  
 
 **Set Up MySQL:**  
-Install MySQL and create a database as per your configuration.  
+Install MySQL and create a database as per the configuration.
+change the password and username in weather.py
 
 **Run Application:**  
 streamlit run weather.py  
