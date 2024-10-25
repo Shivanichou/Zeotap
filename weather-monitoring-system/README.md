@@ -12,17 +12,18 @@ This Python-based real-time weather monitoring system fetches and stores Indian 
 5.**Dynamic Threshold Settings**: Allows setting city-specific temperature thresholds and updates them in real-time.  
 
 **Technologies Used :**  
-**Python**.  
-**Streamlit**: For the web interface.  
-**MySQL**: For data storage.  
-**OpenWeatherMap API**: To fetch weather data.  
-**Docker & Docker Compose**: For containerized environments.  
-**Plotly & Matplotlib**: For data visualization.  
+**Frontend**: Streamlit for the web interface.  
+**Backend:** Python for core logic.  
+**Database**: MySQL for data storage.  
+**API**: OpenWeatherMap API to fetch weather data.  
+**Containerizatio**n: Docker & Docker Compose for containerized environments.  
+**Visualization**: Plotly & Matplotlib for data visualization.  
 
 **Configuration**  
 The OpenWeatherMap API key [484b2b352eae133bc2d7abced19a421c] is hardcoded into the script, but you can modify it dynamically through the sidebar and validate the new key for accuracy.
 
 **Installation**  
+We leverage Docker to ensure seamless deployment and portability of the application across different environments.
 1.**Pull the Weather-monitor-app image**: docker pull yourusername/weather-monitor-app:latest  
 2.**pull the sql image** : docker pull mysql:8.0  
 3.**run the Docker image** : docker run -p 8501:8501 yourusername/weather-monitor-app:latest  
@@ -39,7 +40,7 @@ The MySQL database is initialized with three tables:
  For testing the core logic without Streamlit, use the provided **corelogic_without_streamlit_for_testing.py** file provided in testcases folder. This file includes automated API calls, weather data retrieval, and temperature conversion verification.      
 
  **To run the tests:**  
- **Go to docker shell from cmd**: docker exec -it rule-engine-app sh  
+ **Go to docker shell from cmd**: docker exec -it <container_name> sh  
  **Run test cases**: python -m unittest <testcase_name>.py  
 
  **Troubleshooting** :  
