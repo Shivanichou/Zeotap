@@ -1,0 +1,26 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 9961
+      MYSQL_DATABASE: weather_data
+      MYSQL_USER: user
+      MYSQL_PASSWORD: userpassword
+    # Remove the ports section for internal access only
+
+
+  # Streamlit Application Service
+  app:
+    build: .                         # Build from the Dockerfile in the current directory
+    container_name: weather-monitoring-app
+    ports:
+      - "8501:8501"                  # Expose Streamlit port 8501 to the host machine
+    depends_on:
+      - mysql
+    environment:
+      MYSQL_HOST: mysql              # Use the service name for internal communication
+      MYSQL_USER: root               # MySQL root user
+      MYSQL_PASSWORD: 9961           # MySQL root password
+      MYSQL_DATABASE: weather_data   # The database you want to connect to
