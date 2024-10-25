@@ -1,7 +1,3 @@
-**GUI Overview**  
-Pic1 ![image](https://github.com/user-attachments/assets/8bf68ec1-341b-440d-b528-eedf4f552a75)
-Pic2 ![image](https://github.com/user-attachments/assets/10293e26-7cb8-46fc-98d9-f76440ed6fbc)
-
 
 **Overview**  
 This Python-based real-time weather monitoring system fetches and stores Indian city weather data from the OpenWeatherMap API. It offers forecasting and visualizations via Streamlit, leveraging MySQL for data storage and Docker Compose for environment setup.
@@ -74,6 +70,11 @@ Install MySQL and create a database as per your configuration.
 
 **Run Application:**  
 streamlit run weather.py  
+
+**GUI Overview**  
+Pic1 ![image](https://github.com/user-attachments/assets/8bf68ec1-341b-440d-b528-eedf4f552a75)
+Pic2 ![pic2](https://github.com/user-attachments/assets/604d4a8b-7bb1-4535-8487-ce1a789430d8)
+
 
 
 
