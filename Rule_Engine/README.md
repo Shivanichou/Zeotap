@@ -33,6 +33,17 @@ The MySQL database is initialized with two tables:
 **rules table**   : Store Business Rules,Organize Rules by ID,Facilitate Rule Management.  
 **metadata table**: Store Application Configuration,Version Control.  
 
+**Evaluation logic**: lets say there are four rules,
+ Rule 1: age=10
+ Rule 2: age>10 or salary=1000
+ Rule 3: age>10 and salary=1000 and experience=5
+ Rule 4: age>10 and salary=1000 or experience=5 
+ Rule 5: age>10 and salary=1000 and experience=5 and department ='HR'
+
+ case 1: If user entered only age attribute then only Rule 1 executes.
+ case 2: if user enetered only 
+ 
+
 **Testing**:  
  For testing the core logic without Streamlit, use the provided **corelogic_without_streamlit_for_testing** file provided in testcases folder. This file create rule,evaluate rule,combine_rule verification.       
 
@@ -60,4 +71,8 @@ Install MySQL and create a database as per the configuration. change the passwor
 
 ****Run Application**:  
 streamlit run rule_engine.py  
+
+**GUI Overview** 
+![image](https://github.com/user-attachments/assets/aae1894a-492c-4e64-b199-9f9e526703a4)
+
 
