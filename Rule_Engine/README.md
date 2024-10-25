@@ -33,17 +33,28 @@ The MySQL database is initialized with two tables:
 **rules table**   : Store Business Rules,Organize Rules by ID,Facilitate Rule Management.  
 **metadata table**: Store Application Configuration,Version Control.  
 
-**Evaluation logic**: lets say there are four rules,
- Rule 1: age=10
- Rule 2: age>10 or salary=1000
- Rule 3: age>10 and salary=1000 and experience=5
- Rule 4: age>10 and salary=1000 or experience=5 
- Rule 5: age>10 and salary=1000 and experience=5 and department ='HR'
+**Evaluation logic**: 
+ **Rule Definitions**
+ **Rule 1**: age=10   
+ **Rule 2**: age>10 or salary=1000    
+ **Rule 3**: age>10 and salary=1000 and experience=5    
+ **Rule 4**: age>10 and salary=1000 or experience=5     
+ **Rule 5**: age>10 and salary=1000 and experience=5 and department ='HR'  
 
- case 1: If user entered only age attribute then only Rule 1 executes.
- case 2: if user enetered only 
- 
+Execution Scenarios:
 
+**Single Attribute**: If the user only provides the age attribute, only **Rule 1** is evaluated. 
+**Multiple Attributes**:
+If the user provides age, salary, and experience,** Rules 3 and 4** are evaluated. 
+If the user provides age, salary,experience, and department, **Rule 5** is evaluated. 
+
+**Combined logic**:
+ When two rules are combined, the system determines the most frequent logical operator (AND or OR) present in both rules. This operator is then used to combine the conditions of the two rules   
+ Note: Combined rules are not persisted in the database. They are evaluated dynamically based on the user's input and the specified rules.   
+ Example:  
+ If Rule 3 and Rule 4 are combined, the resulting combined rule would be:  
+ (age > 10 AND salary = 1000 AND experience = 5) AND (age > 10 AND salary = 1000 OR experience = 5)  
+   
 **Testing**:  
  For testing the core logic without Streamlit, use the provided **corelogic_without_streamlit_for_testing** file provided in testcases folder. This file create rule,evaluate rule,combine_rule verification.       
 
