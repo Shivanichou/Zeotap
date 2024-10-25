@@ -1,7 +1,7 @@
 
 **Overview**  
-This Python-based real-time weather monitoring system fetches and stores Indian city weather data from the OpenWeatherMap API. It offers forecasting and visualizations via Streamlit, leveraging MySQL for data storage and Docker Compose for environment setup.
-Scheduler will automatically run every 1 minute to process weather data.
+This Python-based real-time weather monitoring system fetches and stores Indian city weather data from the OpenWeatherMap API. It offers forecasting and visualizations via Streamlit, leveraging MySQL for data storage and Docker Compose for environment setup. The scheduler will automatically run every 1 minute to process weather data, and the application will check for updates every 1 minute to trigger alerts."
+
 **Access the Application at**: http://localhost:8501/ [ if any issues please refer access section in below ]
 
 **Features**  
