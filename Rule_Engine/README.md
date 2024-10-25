@@ -42,9 +42,9 @@ The MySQL database is initialized with two tables:
 
 **Accessing portal Issue**s:  
 **Issue 1**: Bind for 0.0.0.0:8502 failed: port is already allocate.  
-**Solution** : Need to kill the existing process using below commands in host machine:  
-              1.**netstat -ano | findstr :8502 **-> to check if it is already using. if exists run next command.  
-              2.**taskkill /PID <process_id> /F **-> Here <process_id> referts to process id's  
+**Solution** : Need to kill the existing process using below commands in host machine:    
+              1.**netstat -ano | findstr :8502 **-> to check if it is already using. if exists run next command.    
+              2.**taskkill /PID <process_id> /F **-> Here <process_id> referts to process id's    
               
 **If you encounter issues with the Docker image, please set up the environment on your local machine and use pycharm:**  
 **Clone Repository**: git clone https://github.com/yourusername/yourrepository.git  
