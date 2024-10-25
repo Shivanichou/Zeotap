@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  # MySQL Database Service
+  mysql:
+    image: mysql:8.0  # Use the official MySQL image with version 8.0
+    container_name: rule-engine-db  # Name the container as 'rule-engine-db'
+    environment:
+      MYSQL_ROOT_PASSWORD: 9961
+      MYSQL_DATABASE: rule_engine
+    ports:
+      - "3307:3306"  # Expose MySQL on port 3307 to avoid conflicts with other instances
+    volumes:
+      - rule-engine-db-data:/var/lib/mysql
+    networks:
+      - rule-engine-network
+
+  # Streamlit Application Service
+  app:
+    build: .  # Build from the Dockerfile in the current directory
+    container_name: rule-engine-app  # Name the container as 'rule-engine-app'
+    ports:
+      - "8502:8501"  # Expose Streamlit port 8501 to the host machine
+    depends_on:
+      - mysql
+    environment:
+      MYSQL_HOST: rule-engine-db  # Use the container name for internal communication
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 9961
+      MYSQL_DATABASE: rule_engine
+    networks:
+      - rule-engine-network
+
+volumes:
+  rule-engine-db-data:
+
+networks:
+  rule-engine-network:
