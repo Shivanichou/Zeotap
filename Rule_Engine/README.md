@@ -27,17 +27,20 @@ We leverage Docker to ensure seamless deployment and portability of the applicat
 
 To deploy and run the Rule Engine application, we follow these steps:  
 
-1.**Pull the Image**: We retrieve the latest Rule Engine image from the Docker registry using the   
+1.**Pull the Image**: We retrieve the latest Rule Engine image from the Docker registry using the 
+
                       **command:** docker pull shivanichoutapally/rule-engine:latest  
                       
-2.**Create a Network**: A new Docker network named choutapally-network is established to facilitate communication between containers.  
+2.**Create a Network**: A new Docker network named choutapally-network is established to facilitate communication between containers. 
+
                       **command:** docker network create choutapally-network 
                       
-3.**Start the MySQL Container**: A MySQL container is launched with the specified database credentials and port mapping. It's connected to the network using   
-                      **command:** docker run -d --name rule-engine-db --network choutapally-network -e MYSQL_ROOT_PASSWORD=9961 -e MYSQL_DATABASE=rule_engine -e MYSQL_USER=user -e MYSQL_PASSWORD=userpassword -p 3307:3306 
-                                  mysql:8.0.   
+3.**Start the MySQL Container**: A MySQL container is launched with the specified database credentials and port mapping. It's connected to the network using
+
+                      **command:** docker run -d --name rule-engine-db --network choutapally-network -e MYSQL_ROOT_PASSWORD=9961 -e MYSQL_DATABASE=rule_engine -e MYSQL_USER=user -e MYSQL_PASSWORD=userpassword -p 3307:3306 mysql:8.0.   
                                   
 4.**Start the Rule Engine Container**: Finally, the Rule Engine container is started, linked to the MySQL container, and exposed on port 8502 using 
+
                      **command:** docker run -d -p 8502:8501 --name vigilant_ellit --network my-network1 -e MYSQL_HOST=rule-engine-db -e MYSQL_USER=user -e MYSQL_PASSWORD=userpassword -e MYSQL_DATABASE=rule_engine 
                                  shivanichoutapally/rule-engine:latest  
                                  
