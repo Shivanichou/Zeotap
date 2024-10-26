@@ -41,8 +41,7 @@ To deploy and run the Rule Engine application, we follow these steps:
                                   
 4.**Start the Rule Engine Container**: Finally, the Rule Engine container is started, linked to the MySQL container, and exposed on port 8502 using the command
 
-                     docker run -d -p 8502:8501 --name vigilant_ellit --network my-network1 -e MYSQL_HOST=rule-engine-db -e MYSQL_USER=user -e MYSQL_PASSWORD=userpassword -e MYSQL_DATABASE=rule_engine 
-                     shivanichoutapally/rule-engine:latest  
+                     docker run -d -p 8502:8501 --name vigilant_ellit --network my-network1 -e MYSQL_HOST=rule-engine-db -e MYSQL_USER=user -e MYSQL_PASSWORD=userpassword -e MYSQL_DATABASE=rule_engine shivanichoutapally/rule-engine:latest  
                                  
 Access the application at  http://localhost:8502/
 
