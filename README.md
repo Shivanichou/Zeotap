@@ -4,8 +4,8 @@ This repository contains two distinct projects and both projects come with Docke
 
 Docker Instructions: To ensure smooth operation of the Rule Engine, please verify that ports 8502 and 3307 are not currently in use. If these ports are occupied, kindly terminate the associated processes using the provided commands:  
 
-   netstat -aon | findstr :<port>  
-   taskkill /PID <process_id> /  
+   netstat -aon | findstr :[port]   
+   taskkill /PID <process_id> /    
    
 Once the ports are free, proceed to run the Docker image and access the Rule Engine application at http://localhost:8502.  
 
@@ -14,7 +14,7 @@ Once the ports are free, proceed to run the Docker image and access the Rule Eng
 
 Docker Instructions: To ensure smooth operation of the Weather monitorinng app, please verify that ports 8501 and 3306 are not currently in use. If these ports are occupied, kindly terminate the associated processes using the provided commands:  
 
-   netstat -aon | findstr :<port>  
+   netstat -aon | findstr :[port]   
    taskkill /PID <process_id> /  
    
 Once the ports are free, proceed to run the Docker image and access the weather monitor application at http://localhost:8501.  
