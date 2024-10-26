@@ -27,21 +27,21 @@ We leverage Docker to ensure seamless deployment and portability of the applicat
 
 To deploy and run the Rule Engine application, we follow these steps:  
 
-1.**Pull the Image**: We retrieve the latest Rule Engine image from the Docker registry using the 
+1.**Pull the Image**: We retrieve the latest Rule Engine image from the Docker registry using the command
 
-                      **command:** docker pull shivanichoutapally/rule-engine:latest  
+                       docker pull shivanichoutapally/rule-engine:latest  
                       
-2.**Create a Network**: A new Docker network named choutapally-network is established to facilitate communication between containers. 
+2.**Create a Network**: A new Docker network named choutapally-network is established to facilitate communication between containers using the command 
 
-                      **command:** docker network create choutapally-network 
+                       docker network create choutapally-network 
                       
-3.**Start the MySQL Container**: A MySQL container is launched with the specified database credentials and port mapping. It's connected to the network using
+3.**Start the MySQL Container**: A MySQL container is launched with the specified database credentials and port mapping. It's connected to the network using the commmand
 
-                      **command:** docker run -d --name rule-engine-db --network choutapally-network -e MYSQL_ROOT_PASSWORD=9961 -e MYSQL_DATABASE=rule_engine -e MYSQL_USER=user -e MYSQL_PASSWORD=userpassword -p 3307:3306 mysql:8.0.   
+                      docker run -d --name rule-engine-db --network choutapally-network -e MYSQL_ROOT_PASSWORD=9961 -e MYSQL_DATABASE=rule_engine -e MYSQL_USER=user -e MYSQL_PASSWORD=userpassword -p 3307:3306 mysql:8.0.   
                                   
-4.**Start the Rule Engine Container**: Finally, the Rule Engine container is started, linked to the MySQL container, and exposed on port 8502 using 
+4.**Start the Rule Engine Container**: Finally, the Rule Engine container is started, linked to the MySQL container, and exposed on port 8502 using the command
 
-                     **command:** docker run -d -p 8502:8501 --name vigilant_ellit --network my-network1 -e MYSQL_HOST=rule-engine-db -e MYSQL_USER=user -e MYSQL_PASSWORD=userpassword -e MYSQL_DATABASE=rule_engine 
+                     docker run -d -p 8502:8501 --name vigilant_ellit --network my-network1 -e MYSQL_HOST=rule-engine-db -e MYSQL_USER=user -e MYSQL_PASSWORD=userpassword -e MYSQL_DATABASE=rule_engine 
                                  shivanichoutapally/rule-engine:latest  
                                  
 Access the application at  http://localhost:8502/
@@ -80,10 +80,11 @@ To test the core logic independently of Streamlit, utilize the pre-integrated co
 
  **To run the tests:**    
  **Access the Docker container shell** : docker exec -it <container_name> sh      
- **Execute the test cases**: tc1. python -m unittest create_rule.py
-                             tc2. python -m unittest combine_rule.py
-                             tc3. python -m unittest evaluate_rule.py
-                             tc4. python -m unittest combining_additional_rule.pt
+ **Execute the test cases**: 
+                             tc1: python -m unittest create_rule.py  
+                             tc2: python -m unittest combine_rule.py  
+                             tc3: python -m unittest evaluate_rule.py  
+                             tc4: python -m unittest combining_additional_rule.py  
 
 **Accessing portal Issue*s*:  
 **Issue 1**: Bind for 0.0.0.0:8502 failed: port is already allocate.  
