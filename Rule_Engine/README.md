@@ -1,7 +1,7 @@
 **Overview**  
 This project is a real-time rule-based engine that defines, modifies, evaluates, and manages business rules. It leverages a Streamlit GUI and MySQL database for user interface and data storage, respectively.  
 
-**Features**
+**Features**  
 **Create New Rules**       : Define rules with logical and comparison operators.  
 **View and Delete Rules**  : Manage existing rules directly from the interface.  
 **Update Rules**           : Modify rules that are already stored in the database.  
@@ -9,10 +9,10 @@ This project is a real-time rule-based engine that defines, modifies, evaluates,
 **Evaluate Rules**         : Check if user-provided input values satisfy existing rules.  
 **Dynamic Attribute Input**: User-friendly form for entering evaluation data.  
 
-**Technologies Used:**
+**Technologies Used:**  
 **Frontend**        : Streamlit for building a web-based interface.  
 **Backend**         : Python 3.12.3 for rule evaluation logic.  
-**Databas**e        : MySQL for storing rules.  
+**Database**        : MySQL for storing rules.  
 **Containerization**: Docker & Docker Compose for containerized environments.
 
 **System Architecture**  
@@ -23,10 +23,25 @@ The system is divided into four components:
 **User Interface**: Built with Streamlit for rule creation, modification, and evaluation.  
 
 **Installation**    
-We leverage Docker to ensure seamless deployment and portability of the application across different environments.  
-1.**Pull the Rule image**: docker pull yourusername/weather-monitor-app:latest.   
-2.**pull the sql image** : docker pull mysql:8.0.  
-3.**run the Docker image** : docker run -p 8501:8501 yourusername/weather-monitor-app:latest.  
+We leverage Docker to ensure seamless deployment and portability of the application across different environments. 
+
+To deploy and run the Rule Engine application, we follow these steps:  
+
+1.**Pull the Image**: We retrieve the latest Rule Engine image from the Docker registry using the   
+                      **command:** docker pull shivanichoutapally/rule-engine:latest  
+                      
+2.**Create a Network**: A new Docker network named choutapally-network is established to facilitate communication between containers.  
+                      **command:** docker network create choutapally-network 
+                      
+3.**Start the MySQL Container**: A MySQL container is launched with the specified database credentials and port mapping. It's connected to the network using   
+                      **command:** docker run -d --name rule-engine-db --network choutapally-network -e MYSQL_ROOT_PASSWORD=9961 -e MYSQL_DATABASE=rule_engine -e MYSQL_USER=user -e MYSQL_PASSWORD=userpassword -p 3307:3306 
+                                  mysql:8.0.   
+                                  
+4.**Start the Rule Engine Container**: Finally, the Rule Engine container is started, linked to the MySQL container, and exposed on port 8502 using 
+                     **command:** docker run -d -p 8502:8501 --name vigilant_ellit --network my-network1 -e MYSQL_HOST=rule-engine-db -e MYSQL_USER=user -e MYSQL_PASSWORD=userpassword -e MYSQL_DATABASE=rule_engine 
+                                 shivanichoutapally/rule-engine:latest  
+                                 
+Access the application at  http://localhost:8502/
 
 **Database Setup**  
 The MySQL database is initialized with two tables:    
@@ -44,23 +59,28 @@ The MySQL database is initialized with two tables:
 Execution Scenarios:  
 
 **Single Attribute**: If the user only provides the age attribute, only **Rule 1** is evaluated.   
-**Multiple Attributes**:  
-If the user provides age, salary, and experience,** Rules 3 and 4** are evaluated.   
+**Multiple Attributes**: 
+
+If the user provides age, salary, and experience, **Rules 3 and 4** are evaluated.   
 If the user provides age, salary,experience, and department, **Rule 5** is evaluated.   
 
 **Combined logic**:  
- When two rules are combined, the system determines the most frequent logical operator (AND or OR) present in both rules. This operator is then used to combine the conditions of the two rules     
+
+ When two rules are combined, the system determines the most frequent logical operator (AND or OR) present in both rules. This operator is then used to combine the conditions of the two rules.     
  Note: Combined rules are not persisted in the database. They are evaluated dynamically based on the user's input and the specified rules.     
  Example:   
  If Rule 3 and Rule 4 are combined, the resulting combined rule would be:    
  (age > 10 AND salary = 1000 AND experience = 5) AND (age > 10 AND salary = 1000 OR experience = 5)    
    
 **Testing**:    
- For testing the core logic without Streamlit, use the provided **corelogic_without_streamlit_for_testing** file provided in testcases folder. This file create rule,evaluate rule,combine_rule verification.         
+To test the core logic independently of Streamlit, utilize the pre-integrated corelogic_without_streamlit_for_testing file within the rule engine image. This file facilitates the verification of rule creation, evaluation, and combination          
 
  **To run the tests:**    
- **Go to docker shell from cmd**: docker exec -it <container_name> sh      
- **Run test cases**: python -m unittest <testcase_name>.py     
+ **Access the Docker container shell** : docker exec -it <container_name> sh      
+ **Execute the test cases**: tc1. python -m unittest create_rule.py
+                             tc2. python -m unittest combine_rule.py
+                             tc3. python -m unittest evaluate_rule.py
+                             tc4. python -m unittest combining_additional_rule.pt
 
 **Accessing portal Issue*s*:  
 **Issue 1**: Bind for 0.0.0.0:8502 failed: port is already allocate.  
