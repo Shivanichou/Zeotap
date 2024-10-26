@@ -43,7 +43,7 @@ To deploy and run the Rule Engine application, we follow these steps:
 
                      docker run -d -p 8502:8501 --name vigilant_ellit --network choutapally-network -e MYSQL_HOST=rule-engine-db -e MYSQL_USER=user -e MYSQL_PASSWORD=userpassword -e MYSQL_DATABASE=rule_engine shivanichoutapally/rule-engine:latest  
                                  
-Access the application at  http://localhost:8502/
+Access the application at  http://localhost:8502/   # If having access issues please refer **Accessing portal Issues** in below.
 
 **Database Setup**  
 The MySQL database is initialized with two tables:    
