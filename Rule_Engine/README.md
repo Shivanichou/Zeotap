@@ -62,6 +62,7 @@ The MySQL database is initialized with two tables:
 Execution Scenarios:  
 
 **Single Attribute**: If the user only provides the age attribute, only **Rule 1** is evaluated.   
+
 **Multiple Attributes**: 
 
 If the user provides age, salary, and experience, **Rules 3 and 4** are evaluated.   
