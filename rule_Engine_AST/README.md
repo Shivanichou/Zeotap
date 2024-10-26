@@ -29,7 +29,7 @@ To deploy and run the Rule Engine application, we follow these steps:
 
 1.**Pull the Image**: We retrieve the latest Rule Engine image from the Docker registry using the command
 
-                      docker pull shivanichoutapally/rule-engine-app:v4.0  
+                      docker pull shivanichoutapally/rule-engine-app:v8.0  
                       
 2.**Create a Network**: A new Docker network named choutapally-network is established to facilitate communication between containers using the command 
 
@@ -41,7 +41,7 @@ To deploy and run the Rule Engine application, we follow these steps:
                                   
 4.**Start the Rule Engine Container**: Finally, the Rule Engine container is started, linked to the MySQL container, and exposed on port 8502 using the command
 
-                     docker run -d -p 8502:8501 --name vigilant_ellit --network choutapally-network -e MYSQL_HOST=rule-engine-db -e MYSQL_USER=user -e MYSQL_PASSWORD=userpassword -e MYSQL_DATABASE=rule_engine shivanichoutapally/rule-engine-app:v4.0 
+                     docker run -d -p 8502:8501 --name vigilant_ellit --network choutapally-network -e MYSQL_HOST=rule-engine-db -e MYSQL_USER=user -e MYSQL_PASSWORD=userpassword -e MYSQL_DATABASE=rule_engine shivanichoutapally/rule-engine-app:v8.0 
                                  
 Access the application at  http://localhost:8502/   # If having access issues please refer **Accessing portal Issues** in below.
 
