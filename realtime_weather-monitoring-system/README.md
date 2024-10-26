@@ -68,10 +68,11 @@ To test the core logic independently of Streamlit, utilize the pre-integrated co
  **Data Retrieval Issues**: If API calls fail, check the network connection or API rate limits.  
 
  **Accessing portal Issues**:  
- **Issue 1**:   Bind for 0.0.0.0:8502 failed: port is already allocate.  
- **Solution** : Need to kill the existing process using below commands in host machine:  
-                1.**netstat -ano | findstr :8502** -> to check if it is already using. if exists run next command.  
-                2.**taskkill /PID <process_id> /F**  -> Here <process_id> referts to process id's
+ **Issue **:   Bind for 0.0.0.0:8502 failed: port is already allocate or unable to access the application. 
+ **Solution** : To ensure smooth operation of the Weather monitorinng app, please verify that ports 8501 and 3306 are not currently in use. If these ports are occupied, kindly terminate the associated processes using the provided commands in powershell:  
+
+netstat -aon | findstr :[port]  # to check availablity of ports
+taskkill /PID <process_id> /F   #if busy please kill them.
 
 **If you encounter issues with the Docker image, please set up the environment on your local machine and use pycharm**:  
 **Clone Repository:** 
