@@ -42,7 +42,7 @@ To deploy and run the Rule Engine application, we follow these steps:
 
                        docker run -d -p 8501:8501 --name vigilant_ellis --network choutapally1-network  -e MYSQL_HOST=mysql -e MYSQL_USER=user -e MYSQL_PASSWORD=userpassword -e MYSQL_DATABASE=weather_data shivanichoutapally/weather-monitoring:latest
 
-                       Access the application : http://localhost:8501/
+Access the application : http://localhost:8501/
 
 
 **Database Setup**:   
