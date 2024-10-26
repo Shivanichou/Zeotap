@@ -10,7 +10,7 @@ Docker Instructions: To ensure smooth operation of the Rule Engine, please verif
 Once the ports are free, proceed to run the Docker image and access the Rule Engine application at http://localhost:8502.  
 
 
-2.**Weather Monitoring System** :The Weather Monitoring System is a real-time weather tracking tool using the OpenWeatherMap API.  
+2. **Weather Monitoring System** :The Weather Monitoring System is a real-time weather tracking tool using the OpenWeatherMap API.  
 
 Docker Instructions: To ensure smooth operation of the Weather monitorinng app, please verify that ports 8501 and 3306 are not currently in use. If these ports are occupied, kindly terminate the associated processes using the provided commands in powershell:  
 
