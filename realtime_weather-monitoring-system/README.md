@@ -71,8 +71,8 @@ To test the core logic independently of Streamlit, utilize the pre-integrated co
  **Issue **:   Bind for 0.0.0.0:8502 failed: port is already allocate or unable to access the application.   
  **Solution** : To ensure smooth operation of the Weather monitorinng app, please verify that ports 8501 and 3306 are not currently in use. If these ports are occupied, kindly terminate the associated processes using the provided commands in powershell:    
 
-netstat -aon | findstr :[port]  # to check availablity of ports  
-taskkill /PID <process_id> /F   #if busy please kill them.  
+netstat -aon | findstr :[port]   # to check availablity of ports  
+taskkill /PID <process_id> /F    #if busy please kill them.  
 
 **If you encounter issues with the Docker image, please set up the environment on your local machine and use pycharm**:  
 **Clone Repository:** 
