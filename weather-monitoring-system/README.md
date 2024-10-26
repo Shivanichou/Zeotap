@@ -52,11 +52,17 @@ The MySQL database is initialized with three tables:
 **forecasts**: Stores forecast data for each city.    
 
 **Testing**:   
- For testing the core logic without Streamlit, use the provided **corelogic_without_streamlit_for_testing.py** file provided in testcases folder. This file includes automated API calls, weather data retrieval, and temperature conversion verification.      
+To test the core logic independently of Streamlit, utilize the pre-integrated code_without_streamlit_logic file within the rule engine image. This file facilitates the verification of rule creation, evaluation, and combination  
 
- **To run the tests:**  
- **Go to docker shell from cmd**: docker exec -it <container_name> sh  
+ **To run the tests:**      
+ **Access the Docker container shell** : docker exec -it <container_name> sh   
  **Run test cases**: python -m unittest <testcase_name>.py  
+ **Execute the test cases**:   
+                             tc1: python -m unittest system_setup.py  
+                             tc2: python -m unittest data_retrieval.py  
+                             tc3: python -m unittest temperature_conversion.py  
+                             tc4: python -m unittest daily_weather_summary.py
+                             tc5: python -m unittest alerting_thresholds.py 
 
  **Troubleshooting** :  
  **Common Issues** :  
