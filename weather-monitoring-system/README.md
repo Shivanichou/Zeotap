@@ -28,7 +28,7 @@ To deploy and run the Rule Engine application, we follow these steps:
 
 1.**Pull the Image**: We retrieve the latest Weather monitoring image from the Docker registry using the command  
 
-                      docker pull shivanichoutapally/weather-monitoring:latest  
+                      docker pull shivanichoutapally/weather-monitoring:v1.0 
                       
 2.**Create a Network**: A new Docker network named choutapally1-network is established to facilitate communication between containers using the command  
 
@@ -40,7 +40,7 @@ To deploy and run the Rule Engine application, we follow these steps:
 
 4.**Start the Rule Engine Container**: Finally, the Rule Engine container is started, linked to the MySQL container, and exposed on port 8501 using the command
 
-                       docker run -d -p 8501:8501 --name vigilant_ellis --network choutapally1-network  -e MYSQL_HOST=mysql -e MYSQL_USER=user -e MYSQL_PASSWORD=userpassword -e MYSQL_DATABASE=weather_data shivanichoutapally/weather-monitoring:latest
+                       docker run -d -p 8501:8501 --name vigilant_ellis --network choutapally1-network  -e MYSQL_HOST=mysql -e MYSQL_USER=user -e MYSQL_PASSWORD=userpassword -e MYSQL_DATABASE=weather_data shivanichoutapally/weather-monitoring:v1.0
 
 Access the application : http://localhost:8501/
 
