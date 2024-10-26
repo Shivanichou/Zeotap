@@ -29,11 +29,11 @@ To deploy and run the Rule Engine application, we follow these steps:
 
 1.**Pull the Image**: We retrieve the latest Rule Engine image from the Docker registry using the command
 
-                       docker pull shivanichoutapally/rule-engine:latest  
+                      docker pull shivanichoutapally/rule-engine:latest  
                       
 2.**Create a Network**: A new Docker network named choutapally-network is established to facilitate communication between containers using the command 
 
-                       docker network create choutapally-network 
+                      docker network create choutapally-network 
                       
 3.**Start the MySQL Container**: A MySQL container is launched with the specified database credentials and port mapping. It's connected to the network using the commmand
 
