@@ -29,7 +29,7 @@ To deploy and run the Rule Engine application, we follow these steps:
 
 1.**Pull the Image**: We retrieve the latest Rule Engine image from the Docker registry using the command
 
-                      docker pull shivanichoutapally/rule-engine:latest  
+                      docker pull shivanichoutapally/rule-engine-app:v1.0  
                       
 2.**Create a Network**: A new Docker network named choutapally-network is established to facilitate communication between containers using the command 
 
@@ -41,7 +41,7 @@ To deploy and run the Rule Engine application, we follow these steps:
                                   
 4.**Start the Rule Engine Container**: Finally, the Rule Engine container is started, linked to the MySQL container, and exposed on port 8502 using the command
 
-                     docker run -d -p 8502:8501 --name vigilant_ellit --network choutapally-network -e MYSQL_HOST=rule-engine-db -e MYSQL_USER=user -e MYSQL_PASSWORD=userpassword -e MYSQL_DATABASE=rule_engine shivanichoutapally/rule-engine:latest  
+                     docker run -d -p 8502:8501 --name vigilant_ellit --network choutapally-network -e MYSQL_HOST=rule-engine-db -e MYSQL_USER=user -e MYSQL_PASSWORD=userpassword -e MYSQL_DATABASE=rule_engine shivanichoutapally/rule-engine-app:v1.0 
                                  
 Access the application at  http://localhost:8502/   # If having access issues please refer **Accessing portal Issues** in below.
 
@@ -81,18 +81,18 @@ To test the core logic independently of Streamlit, utilize the pre-integrated co
  **To run the tests:**    
  **Access the Docker container shell** : docker exec -it <container_name> sh      
  **Execute the test cases**:   
-                             tc1: python -m unittest create_rule.py  
-                             tc2: python -m unittest combine_rule.py  
-                             tc3: python -m unittest evaluate_rule.py  
-                             tc4: python -m unittest combining_additional_rule.py  
+                             tc1: python -m unittest tc_create_rule.py  
+                             tc2: python -m unittest tc_combine_rule.py  
+                             tc3: python -m unittest tc_evaluate_rule.py  
+                             tc4: python -m unittest tc_combining_additional_rule.py  
 
 **Accessing portal Issues**: 
 
 **Issue **: Bind for 0.0.0.0:8502 or 3307 failed: port is already allocate.  or unable to access the application.   
 **Solution** : Docker Instructions: To ensure smooth operation of the Rule Engine, please verify that ports 8502 and 3307 are not currently in use. If these ports are occupied, kindly terminate the associated processes using the provided commands in powershell:  
 
-netstat -aon | findstr :[port]  # To check availablity of ports.
-taskkill /PID <process_id> /F   # If ports busy kill them.
+netstat -aon | findstr :[port]  # To check availablity of ports.  
+taskkill /PID <process_id> /F   # If ports busy kill them.  
 
 Once the ports are free, proceed to run the Docker image and access the Rule Engine application at http://localhost:8502.  
 
