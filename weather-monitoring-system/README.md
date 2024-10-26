@@ -2,7 +2,6 @@
 **Overview**  
 This Python-based real-time weather monitoring system fetches and stores Indian city weather data from the OpenWeatherMap API. It offers forecasting and visualizations via Streamlit, leveraging MySQL for data storage and Docker Compose for environment setup. The scheduler will automatically run every 1 minute to process weather data, and the application will check for updates every 1 minute to trigger alerts."
 
-**Access the Application at**: http://localhost:8501/ [ if any issues please refer access section in below ]
 
 **Features**  
 1.**Real-time Weather Data**: Automatically fetches real-time weather data for pre-defined cities at regular intervals.  
@@ -23,12 +22,28 @@ This Python-based real-time weather monitoring system fetches and stores Indian 
 The OpenWeatherMap API key [484b2b352eae133bc2d7abced19a421c] is hardcoded into the script, but you can modify it dynamically through the sidebar and validate the new key for accuracy.
 
 **Installation**  
-We leverage Docker to ensure seamless deployment and portability of the application across different environments.
-1.**Pull the Weather-monitor-app image**: docker pull yourusername/weather-monitor-app:latest  
-2.**pull the sql image** : docker pull mysql:8.0  
-3.**run the Docker image** : docker run -p 8501:8501 yourusername/weather-monitor-app:latest  
+We leverage Docker to ensure seamless deployment and portability of the application across different environments.   
 
-**Note**:The Docker Compose file already includes hardcoded credentials for MySQL, eliminating the need for additional configuration during deployment.
+To deploy and run the Rule Engine application, we follow these steps:    
+
+1.**Pull the Image**: We retrieve the latest Weather monitoring image from the Docker registry using the command  
+
+                      docker pull shivanichoutapally/weather-monitoring:latest  
+                      
+2.**Create a Network**: A new Docker network named choutapally1-network is established to facilitate communication between containers using the command  
+
+                       docker network create choutapally1-network  
+
+3.**Start the MySQL Container**: A MySQL container is launched with the specified database credentials and port mapping. It's connected to the network using the commmand  
+
+                       docker run -d --name mysql --network choutapally1-network -e MYSQL_ROOT_PASSWORD=9961 -e MYSQL_DATABASE=weather_data -e MYSQL_USER=user -e MYSQL_PASSWORD=userpassword -p 3306:3306 mysql:8.0
+
+4.**Start the Rule Engine Container**: Finally, the Rule Engine container is started, linked to the MySQL container, and exposed on port 8501 using the command
+
+                       docker run -d -p 8501:8501 --name vigilant_ellis --network choutapally1-network  -e MYSQL_HOST=mysql -e MYSQL_USER=user -e MYSQL_PASSWORD=userpassword -e MYSQL_DATABASE=weather_data shivanichoutapally/weather-monitoring:latest
+
+                       Access the application : http://localhost:8501/
+
 
 **Database Setup**:   
 The MySQL database is initialized with three tables:  
