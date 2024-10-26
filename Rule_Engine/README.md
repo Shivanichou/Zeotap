@@ -37,7 +37,7 @@ To deploy and run the Rule Engine application, we follow these steps:
                       
 3.**Start the MySQL Container**: A MySQL container is launched with the specified database credentials and port mapping. It's connected to the network using the commmand
 
-                      docker run -d --name rule-engine-db --network choutapally-network -e MYSQL_ROOT_PASSWORD=9961 -e MYSQL_DATABASE=rule_engine -e MYSQL_USER=user -e MYSQL_PASSWORD=userpassword -p 3307:3306 mysql:8.0.   
+                      docker run -d --name rule-engine-db --network choutapally-network -e MYSQL_ROOT_PASSWORD=9961 -e MYSQL_DATABASE=rule_engine -e MYSQL_USER=user -e MYSQL_PASSWORD=userpassword -p 3307:3306 mysql:8.0  
                                   
 4.**Start the Rule Engine Container**: Finally, the Rule Engine container is started, linked to the MySQL container, and exposed on port 8502 using the command
 
