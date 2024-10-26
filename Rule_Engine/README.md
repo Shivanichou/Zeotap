@@ -80,13 +80,13 @@ To test the core logic independently of Streamlit, utilize the pre-integrated co
 
  **To run the tests:**    
  **Access the Docker container shell** : docker exec -it <container_name> sh      
- **Execute the test cases**: 
+ **Execute the test cases**:   
                              tc1: python -m unittest create_rule.py  
                              tc2: python -m unittest combine_rule.py  
                              tc3: python -m unittest evaluate_rule.py  
                              tc4: python -m unittest combining_additional_rule.py  
 
-**Accessing portal Issue*s*:  
+**Accessing portal Issues**:  
 **Issue 1**: Bind for 0.0.0.0:8502 failed: port is already allocate.  
 **Solution** : Need to kill the existing process using below commands in host machine:    
               1.**netstat -ano | findstr :8502 **-> to check if it is already using. if exists run next command.    
